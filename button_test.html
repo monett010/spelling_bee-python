@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <title>Spelling Bee</title>
+    </head>
+    <body>
+        <div id="text_inputs">
+            <progress id="level" value="0" max="100">Level</progress>
+            <input type="text" id="current_word" aria-label="current_word" value="">
+            <textarea id="words_played" aria-label="words_played"></textarea>
+        </div>
+
+        <button type="button" id="B" class="letter" aria-label="Enter">Enter</button>
+
+        <script>
+
+
+            function addLettersToTextBox () {
+                const test_box = document.getElementById("current_word");
+                const button_value = document.getElementById("B").id;
+                test_box.value = test_box.value + button_value;
+            }
+                            
+            const button_ = document.getElementById("B");
+            button_.addEventListener("click", (e)=>{
+                addLettersToTextBox();
+                // console.log(document.getElementById("current_word").value)
+            })
+        </script>
+    </body>
+</html>

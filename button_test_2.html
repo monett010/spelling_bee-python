@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <title>Spelling Bee</title>
+    </head>
+    <body>
+        <div id="text_inputs">
+            <progress id="level" value="0" max="100">Level</progress>
+            <input type="text" id="current_word" aria-label="current_word" value="">
+            <textarea id="words_played" aria-label="words_played"></textarea>
+        </div>
+
+        <button type="button" id="A" class="letter" aria-label="Enter">A</button>
+        <button type="button" id="B" class="letter" aria-label="Enter">B</button>
+        <button type="button" id="C" class="letter" aria-label="Enter">C</button>
+        <button type="button" id="D" class="letter" aria-label="Enter">D</button>
+        <button type="button" id="E" class="letter" aria-label="Enter">E</button>
+        <button type="button" id="F" class="letter" aria-label="Enter">F</button>
+        <button type="button" id="G" class="letter" aria-label="Enter">G</button>
+
+        <script>
+
+            function addLettersToTextBox (letter) {
+                const test_box = document.getElementById("current_word");
+                test_box.value = test_box.value + letter;
+            }
+
+            function addEventListenersToLetterButtons () {
+
+                const buttons_ = document.getElementsByClassName("letter");
+                for (let b=0; b < buttons_.length; b++) {
+                    buttons_[b].addEventListener("click", (e)=>{
+                        addLettersToTextBox(buttons_[b].id);
+                    })
+                }
+
+            }
+            
+            addEventListenersToLetterButtons();
+
+        </script>
+    </body>
+</html>

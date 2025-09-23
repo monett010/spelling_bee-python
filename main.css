@@ -1,0 +1,34 @@
+div#letters {
+    height: 500px;
+    width: 70%;
+    margin: auto;
+    border: 1px dashed red;
+}
+
+div#textarea_inputs {
+    height: 300px;
+    width: 90%;
+    border: 1px dashed blue;
+}
+
+progress#level {
+    display: block;
+    width: 100%;
+}
+
+#current_word {
+    display: block;
+    width: 100%;
+}
+
+textarea#words_played {
+    display: block;
+    width: 100%;
+}
+
+div#buttons {
+    width: 70%;
+    margin: auto;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px dashed red;
+}

@@ -63,7 +63,7 @@ class Word {
     async isPangram () {
         const g = new Game(this.gamenum);
         const letters_ = await g.getLetters();
-        const word_ = this.word.toUpperCase();
+        const word_ = this.word.toUpperCase(); // make sure the letters are uppercase, just like the letters in the letters_ array
 
         const letters = new Set(letters_);
         const word = new Set(word_);

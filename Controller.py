@@ -16,4 +16,7 @@ class ReadGameFiles ():
     def getAnswers (self):
         with open(f'{self.game_dir}{self.game}_answer_list.txt','r') as answersfile:
             answers_ = answersfile.read().splitlines()
+            # for a in answers_:
+            #     if ('\n' in answers_):
+            #         answers_.remove('\n')
             return answers_

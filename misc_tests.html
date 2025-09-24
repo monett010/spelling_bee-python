@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <title>Spelling Bee</title>
+        <script src="main.js"></script>
+    </head>
+    <body>
+
+        <script>
+            // const answers = ["been", "begem", "begone","bogey","bogeymen"]
+            // const w = new Word("bogeymen", ["E","B","G","M","N","O","Y"], answers);
+            // const answers_array = ['hello','is','it','you','im','looking','for']
+            // console.log (w.isPangram())
+
+            // console.log(w.wordLength());
+            // console.log(w.isAnswer(answers_array));
+            // console.log(w.calculatePoints())
+
+            // const some_letters_ = ["P", "U", "A"]
+            // const the_days_letters_ = ["A", "R", "P"]
+
+            // const some_letters = new Set(some_letters_);
+            // const the_days_letters = new Set(the_days_letters_);
+            // let intersection = some_letters.intersection(the_days_letters)
+            // console.log(intersection.size);
+
+            
+
+
+            // console.log (g.getPoints());
+            // console.log(g.getLetters());
+            // console.log(g.getAnswers());
+
+            async function isItReallyAPangram () {
+                const w = new Word("moneyman");
+                console.log (await w.isPangram(20230814));
+            }
+
+            // isItReallyAPangram();
+
+            async function calc () {
+                const w = new Word("memo");
+                console.log (await w.calculatePoints(20230814))
+            }
+
+            calc()
+
+        
+
+
+        </script>
+    </body>
+</html>

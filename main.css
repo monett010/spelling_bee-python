@@ -5,25 +5,27 @@ div#letters {
     border: 1px dashed red;
 }
 
-div#textarea_inputs {
+div#top {
     height: 300px;
-    width: 90%;
+    width: 70%;
+    margin: auto;
     border: 1px dashed blue;
 }
 
 progress#level {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: 90%;
+    /* width: 70%; */
 }
 
-#current_word {
-    display: block;
-    width: 100%;
+input[type="text"]#current_word {
+    display: inline-block;
+    width: 90%;
 }
 
 textarea#words_played {
-    display: block;
-    width: 100%;
+    height: 100px;
+    width: 90%;
 }
 
 div#buttons {

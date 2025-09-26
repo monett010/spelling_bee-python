@@ -62,11 +62,11 @@ class Word {
     // returns true if the word is a pangram
     async isPangram () {
         const g = new Game(this.gamenum);
-        const letters_ = await g.getLetters();
-        const word_ = this.word.toUpperCase(); // make sure the letters are uppercase, just like the letters in the letters_ array
+        const letters_array = await g.getLetters();
+        const word_array = this.word.toUpperCase(); // make sure the letters are uppercase, just like the letters in the letters_ array
 
-        const letters = new Set(letters_);
-        const word = new Set(word_);
+        const letters = new Set(letters_array);
+        const word = new Set(word_array);
 
         let intersection = letters.intersection(word);
 

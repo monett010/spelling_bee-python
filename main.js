@@ -103,3 +103,33 @@ class Word {
         return added_words.includes(this.word)
     }
 }
+
+class GameGUI {
+    constructor (gamenum) {
+        this.g = new Game(gamenum);
+    }
+
+    async writeLetterButtons () {
+        const letters = await this.g.getLetters();
+        const button_div = document.getElementById("letters");
+
+        for (let l in letters){
+            const button = `<button type="button" id="${letters[l]}" class="letter" aria-label="${letters[l]}_button">${letters[l]}</button>` 
+            button_div.innerHTML += button;
+        }
+    }
+
+    addLettersToTextBox (letter) {
+        const test_box = document.getElementById("current_word");
+        test_box.value = test_box.value + letter;
+    }
+
+    addEventListenersToLetterButtons () {
+        const buttons = document.getElementsByClassName("letter");
+            for (let b=0; b < buttons.length; b++) {
+                buttons[b].addEventListener("click", (e)=>{
+                    this.addLettersToTextBox(buttons[b].id);
+                })
+            }
+    }
+}

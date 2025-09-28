@@ -19,5 +19,11 @@
             <button type="button" id="shuffle" aria-label="Shuffle">Shuffle</button>
             <button type="button" id="enter" aria-label="Enter">Enter</button>
         </div>
+        <script src="main.js"></script>
+        <script>
+            const gameGUI = new GameGUI(20230814);
+            gameGUI.writeLetterButtons();
+            setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500)
+        </script>
     </body>
 </html>

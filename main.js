@@ -121,7 +121,7 @@ class GameGUI {
 
     addLettersToTextBox (letter) {
         const test_box = document.getElementById("current_word");
-        test_box.value = test_box.value + letter;
+        test_box.value = test_box.value + letter.toLowerCase();
     }
 
     addEventListenersToLetterButtons () {
@@ -131,6 +131,13 @@ class GameGUI {
                     this.addLettersToTextBox(buttons[b].id);
                 })
             }
+    }
+
+    addEventListenerToEnterButton () {
+        const enterButton = document.getElementById("enter");
+        enterButton.addEventListener("click", (e)=>{
+            
+        })
     }
 
     addWordToTextarea (word) {

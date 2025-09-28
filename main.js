@@ -132,4 +132,75 @@ class GameGUI {
                 })
             }
     }
+
+    addWordToTextarea (word) {
+        const textarea = document.getElementById("words_played");
+        textarea.innerHTML += " " + word;
+    }
+}
+
+
+class Points {
+    constructor (pointsPlayed, totalGamePoints) {
+        this.totalGamePoints = totalGamePoints;
+        this.pointsPlayed = pointsPlayed;
+    }
+
+    calculatePercent () {
+        const percent = this.pointsPlayed / this.totalGamePoints;
+        return percent;
+    }
+
+    calculateLevel () {
+        if (this.calculatePercent() == 0) {
+            // "Beginner";
+            return 0;
+        }
+        if (this.calculatePercent() >= .02 && this.calculatePercent() < .05) {
+            // "Good Start";
+            return 1;
+        }
+        if (this.calculatePercent() >= .05 && this.calculatePercent () < .08) {
+            // "Moving Up";
+            return 2;
+        }
+        if (this.calculatePercent() >= .08 && this.calculatePercent() < .15) {
+            // "Good";
+            return 3;
+        }
+        if (this.calculatePercent() >= .15 && this.calculatePercent() < .25) {
+            // "Solid";
+            return 4;   
+        } 
+        if (this.calculatePercent() >= .25 && this.calculatePercent() < .40) {
+            // "Nice";
+            return 5;
+        }
+        if (this.calculatePercent() >= .40 && this.calculatePercent() < .50) {
+            // "Great";
+            return 6;
+        }
+        if (this.calculatePercent() >= .50 && this.calculatePercent() < .70) {
+            // "Amazing";
+            return 7;
+        }
+        if (this.calculatePercent() >= .70 && this.calculatePercent() < 1) {
+            // "Genius";
+            return 8;
+        }
+        if (this.calculatePercent() >= 1) {
+            // "Queen Bee";
+            return 9;
+        } else {
+            return 0;
+        }
+    }
+
+    isGenius () {
+        if (this.calculateLevel() == 8) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

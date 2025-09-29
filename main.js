@@ -244,3 +244,10 @@ class Points {
         }
     }
 }
+
+class Storage extends Game {
+    constructor (gamenum) {
+        this.gamenum = gamenum;
+    }
+    
+}

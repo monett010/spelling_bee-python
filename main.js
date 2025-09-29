@@ -107,6 +107,7 @@ class Word {
 class GameGUI {
     constructor (gamenum) {
         this.g = new Game(gamenum);
+        this.gamenum = gamenum;
     }
 
     async writeLetterButtons () {
@@ -133,16 +134,58 @@ class GameGUI {
             }
     }
 
-    addEventListenerToEnterButton () {
-        const enterButton = document.getElementById("enter");
-        enterButton.addEventListener("click", (e)=>{
-            
-        })
+    addEventListenerToTextInput () {
+        const text_input = document.getElementById("current_word");
+
+        const checkWord = async ()=>{
+            const current_word = new Word(text_input.value, this.gamenum);
+            const isAnswer = await current_word.isAnswer();
+            if (isAnswer) {
+                this.addWordToTextarea(text_input.value);
+                text_input.value = "";
+            } else {
+                console.log ("That's not a word.");
+                text_input.value = "";
+            }
+        }
+
+        text_input.addEventListener("change", checkWord) 
+        //async (e)=> {
+           // const current_word = new Word(text_input.value, this.gamenum);
+            //const isAnswer = await current_word.isAnswer();
+            // console.log(text_input.value)
+            //console.log(isAnswer)
+            //  if (isAnswer === true) {
+            //     con
+            //     // this.addWordToTextarea(w);
+            //     console.log("that's a word")
+            // // If it's not a word, just delete the word from the input.
+            // } else {
+            //     console.log ("is not a word");
+            // }
+        //})
     }
+
+
+    addEventListenerToEnterButton() {
+        const enterButton = document.getElementById("enter");
+        const text_input = document.getElementById("current_word");
+
+        const checkWord = async ()=>{
+            const current_word = new Word(text_input.value, this.gamenum);
+            const isAnswer = await current_word.isAnswer();
+            if (isAnswer) {
+                this.addWordToTextarea(text_input.value);
+            } 
+            text_input.value = "";
+        }
+        enterButton.addEventListener("click", checkWord);
+    }
+
 
     addWordToTextarea (word) {
         const textarea = document.getElementById("words_played");
-        textarea.innerHTML += " " + word;
+        textarea.value += " " + word;
     }
 }
 
@@ -204,7 +247,7 @@ class Points {
     }
 
     isGenius () {
-        if (this.calculateLevel() == 8) {
+        if (this.calculateLevel() === 8) {
             return true;
         } else {
             return false;

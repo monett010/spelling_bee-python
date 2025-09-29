@@ -47,9 +47,21 @@
             }
 
             // calc()
+            
+            async function isItAnAnswer() {
+                const w = new Word("been",20230814);
+                const is = await w.isAnswer();
+                if (is) {
+                    console.log("it is an answer")
+                } else {
+                    console.log("it is not an answer")
+                }
+            }
+            isItAnAnswer();
 
-            const gameGUI = new gameGUI(20230814);
-            gamegui.addWordToTextarea ("test");
+
+
+
 
         
 

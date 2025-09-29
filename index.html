@@ -23,7 +23,9 @@
         <script>
             const gameGUI = new GameGUI(20230814);
             gameGUI.writeLetterButtons();
-            setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500)
+            setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500);
+            setTimeout(() => {gameGUI.addEventListenerToEnterButton()}, 1500);
+            setTimeout(() => {gameGUI.addEventListenerToTextInput()}, 2000);
         </script>
     </body>
 </html>

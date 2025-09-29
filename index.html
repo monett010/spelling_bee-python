@@ -21,6 +21,10 @@
         </div>
         <script src="main.js"></script>
         <script>
+            let words_played = [];
+            let points_total = 0;
+
+            
             const gameGUI = new GameGUI(20230814);
             gameGUI.writeLetterButtons();
             setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500);

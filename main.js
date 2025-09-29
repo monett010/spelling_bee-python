@@ -136,20 +136,7 @@ class GameGUI {
 
     addEventListenerToTextInput () {
         const text_input = document.getElementById("current_word");
-
-        const checkWord = async ()=>{
-            const current_word = new Word(text_input.value, this.gamenum);
-            const isAnswer = await current_word.isAnswer();
-            if (isAnswer) {
-                this.addWordToTextarea(text_input.value);
-                text_input.value = "";
-            } else {
-                console.log ("That's not a word.");
-                text_input.value = "";
-            }
-        }
-
-        text_input.addEventListener("change", checkWord) 
+        text_input.addEventListener("change", this.checkWord) 
         //async (e)=> {
            // const current_word = new Word(text_input.value, this.gamenum);
             //const isAnswer = await current_word.isAnswer();
@@ -166,20 +153,23 @@ class GameGUI {
         //})
     }
 
+    // the callback function that runs in the Enter button 
+    // EventListener and the text input EventListener
+    checkWord = async ()=> {
+        const text_input = document.getElementById("current_word");
+        const current_word = new Word(text_input.value, this.gamenum);
+        const isAnswer = await current_word.isAnswer();
+        // if the word is the answer, add it to the words_played textarea
+        if (isAnswer) {
+            this.addWordToTextarea(text_input.value);
+        } 
+        //delete the word from the text input
+        text_input.value = "";
+        }
 
     addEventListenerToEnterButton() {
         const enterButton = document.getElementById("enter");
-        const text_input = document.getElementById("current_word");
-
-        const checkWord = async ()=>{
-            const current_word = new Word(text_input.value, this.gamenum);
-            const isAnswer = await current_word.isAnswer();
-            if (isAnswer) {
-                this.addWordToTextarea(text_input.value);
-            } 
-            text_input.value = "";
-        }
-        enterButton.addEventListener("click", checkWord);
+        enterButton.addEventListener("click", this.checkWord);
     }
 
 

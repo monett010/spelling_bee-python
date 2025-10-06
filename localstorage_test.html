@@ -9,6 +9,15 @@
 const gs = new GameStorage(20230827);
 gs.initializeStorage();
 
+const g = new GameGUI(20230827);
+
+// setTimeout(()=>{console.log(gs.getWordsPlayedArray())}, 2000);
+
+// console.log (JSON.parse(localStorage.getItem(20230827))["words_played"]);
+
+setTimeout(()=>{g.addToWordsPlayedArray ("ally")}, 2000);
+// setTimeout(()=>{console.log(gs.getWordsPlayedArray())}, 2500);
+
 </script>
 </body>
 </html>

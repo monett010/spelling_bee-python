@@ -107,6 +107,7 @@ class Word {
 class GameGUI {
     constructor (gamenum) {
         this.g = new Game(gamenum);
+        this.gs = new GameStorage(gamenum);
         this.gamenum = gamenum;
     }
 
@@ -160,9 +161,9 @@ class GameGUI {
         const current_word = new Word(text_input.value, this.gamenum);
         const isAnswer = await current_word.isAnswer();
         // if the word is the answer, add it to the words_played textarea
-        if (isAnswer) {
-            this.addWordToTextarea(text_input.value);
-        } 
+            if (isAnswer) {
+                this.addWordToTextarea(text_input.value);
+            } 
         //delete the word from the text input
         text_input.value = "";
         }
@@ -177,6 +178,16 @@ class GameGUI {
         const textarea = document.getElementById("words_played");
         textarea.value += " " + word;
     }
+
+    addToWordsPlayedArray (word) {
+        // get the game data from localStorage, push the new word to
+        // the words_played array, and update the localStorage
+        // with the newly updated game data
+        const game_data = JSON.parse(localStorage.getItem(this.gamenum));
+        const words_played = game_data["words_played"]; //the words_played array
+        words_played.push(word);
+        localStorage.setItem(this.gamenum, JSON.stringify(game_data));
+    }
 }
 
 
@@ -186,7 +197,7 @@ class Points {
         this.pointsPlayed = pointsPlayed;
     }
 
-    addPoints (points_played) {
+    updatePointsEarned (points_played) {
         
     }
 
@@ -267,17 +278,5 @@ class GameStorage {
             localStorage.setItem(this.gamenum, JSON.stringify(game_data));
         }
     }
-
-    // async inizializeStorage () {
-    //     localStorage.setItem('total_points', await this.getPoints());
-        
-    //     if (localStorage.getItem('points_played') === null) {
-    //         localStorage.setItem('points_played', 0);
-    //     }
-
-    //     if (localStorage.getItem('words_played') === null) {
-    //         localStorage.setItem('words_payed', '');
-    //     }
-    // }
 
 }

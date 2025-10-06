@@ -186,6 +186,10 @@ class Points {
         this.pointsPlayed = pointsPlayed;
     }
 
+    addPoints (points_played) {
+        
+    }
+
     calculatePercent () {
         const percent = this.pointsPlayed / this.totalGamePoints;
         return percent;
@@ -245,9 +249,35 @@ class Points {
     }
 }
 
-class Storage extends Game {
+class GameStorage {
     constructor (gamenum) {
         this.gamenum = gamenum;
+        this.g = new Game(gamenum);
     }
-    
+
+    //if the gamenum localstorage doesn't exist, initialize it
+    // with 0 points_earned, empty words_played, and the correct
+    // number of total_points from this.getPoints().
+    // if it does exist, don't worry about it.
+
+    async initializeStorage () {
+        if (localStorage.getItem(this.gamenum) === null){
+            const total_points = await this.g.getPoints();
+            const game_data = {"points_earned": 0, "words_played":[], "total_points": total_points};
+            localStorage.setItem(this.gamenum, JSON.stringify(game_data));
+        }
+    }
+
+    // async inizializeStorage () {
+    //     localStorage.setItem('total_points', await this.getPoints());
+        
+    //     if (localStorage.getItem('points_played') === null) {
+    //         localStorage.setItem('points_played', 0);
+    //     }
+
+    //     if (localStorage.getItem('words_played') === null) {
+    //         localStorage.setItem('words_payed', '');
+    //     }
+    // }
+
 }

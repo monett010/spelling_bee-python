@@ -38,6 +38,17 @@ class Game {
         const answers = await this.fetchData(answers_endpoint);
         return answers; 
     }
+
+    async isGame() {
+        const isgame_endpoint = this.game_url + this.game_num;
+        const isgame = await this.fetchData(isgame_endpoint, 'text');
+
+        if (isgame === "1") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 class Word {
@@ -216,10 +227,79 @@ class GameGUI {
         const progress_bar_label = document.getElementById("progress_bar_label");
         progress_bar.value = p.calculateLevel();
         progress_bar_label.innerHTML = p.getLevelName(p.calculateLevel());
-
     }
+
 }
 
+class LoadGame {
+    // constructor () {
+    //     const queryString = window.location.search;
+    //     const urlParams = new URLSearchParams(queryString);
+    //     const gamenum = urlParams.get('game');
+    //     this.game_data = JSON.parse(localStorage.getItem(gamenum));
+    // }
+    // constructor () {
+    //     this.gameGUI = new GameGUI();
+    // }
+    constructor () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.gamenum = urlParams.get('game');
+    }
+
+    // grabGameFromURL () {
+    //     const queryString = window.location.search;
+    //     const urlParams = new URLSearchParams(queryString);
+    //     const gamenum = urlParams.get('game');
+    //     return gamenum;
+    // }
+
+    loadProgressBar () {
+        const gameGUI = new GameGUI(this.gamenum);
+        const game_data = JSON.parse(localStorage.getItem(this.gamenum));
+        const points_earned = game_data["points_earned"];
+        const total_game_points = game_data["total_points"];
+        gameGUI.updateProgressBar(points_earned, total_game_points);
+    }
+
+    loadTextarea () {
+        const game_data = JSON.parse(localStorage.getItem(this.gamenum));
+        const words_played = game_data["words_played"];
+        const textarea = document.getElementById("words_played");
+
+        for (let w=0; w < words_played.length; w++) {
+            textarea.value += " " + words_played[w];
+        }
+    }
+
+    loadPointsEarned () {
+        const game_data = JSON.parse(localStorage.getItem(this.gamenum));
+        const points_earned = game_data["points_earned"];
+        const gameGUI = new GameGUI(this.gamenum);
+        gameGUI.updatePointsEarnedTextBox(points_earned);
+    }
+
+    async loadGame () {
+        const g = new Game(this.gamenum);
+        const isGame = await g.isGame();
+        const gs = new GameStorage(this.gamenum);
+
+        if (isGame === true) {
+            if (localStorage.getItem(this.gamenum) !== null) {
+                this.loadProgressBar();
+                this.loadTextarea();
+                this.loadPointsEarned();
+            } else {
+                await gs.initializeStorage();
+            }
+            
+        } else {
+            console.log ("Sorry, there's no game here!");
+        }
+
+    }
+
+}
 
 class Points {
     constructor (pointsEarned, totalGamePoints) {

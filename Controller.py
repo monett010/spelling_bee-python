@@ -1,3 +1,4 @@
+import os
 
 class ReadGameFiles ():
     def __init__(self, game):
@@ -20,3 +21,11 @@ class ReadGameFiles ():
             #     if ('\n' in answers_):
             #         answers_.remove('\n')
             return answers_
+
+    def isGame (self):
+        bool = os.path.isdir (f'{self.game_dir}')
+        
+        if (bool == True):
+            return "1"
+        else:
+            return "2"

@@ -12,7 +12,7 @@
             <progress id="level" value="0" max="10">Level</progress>
             <input type="text" size="3" value="0" id="points_earned" aria-label="points_earned">
             <input type="text" id="current_word" aria-label="current_word">
-            <textarea id="words_played" aria-label="words_played" readonly></textarea>
+            <textarea id="words_played" aria-label="words_played"></textarea>
         </div>
         <div id="letters"></div>
         <div id="buttons">
@@ -22,14 +22,16 @@
         </div>
         <script src="main.js"></script>
         <script>
-            const gs = new GameStorage(20230814);
-            gs.initializeStorage();
+            const lg = new LoadGame();
+            lg.loadGame();
+            // const gs = new GameStorage(20230814);
+            // gs.initializeStorage();
             
-            const gameGUI = new GameGUI(20230814);
-            gameGUI.writeLetterButtons();
-            setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500);
-            setTimeout(() => {gameGUI.addEventListenerToEnterButton()}, 1500);
-            setTimeout(() => {gameGUI.addEventListenerToTextInput()}, 2000);
+            // const gameGUI = new GameGUI(20230814);
+            // gameGUI.writeLetterButtons();
+            // setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500);
+            // setTimeout(() => {gameGUI.addEventListenerToEnterButton()}, 1500);
+            // setTimeout(() => {gameGUI.addEventListenerToTextInput()}, 2000);
         </script>
     </body>
 </html>

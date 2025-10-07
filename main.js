@@ -170,6 +170,7 @@ class GameGUI {
                 this.addToWordsPlayedArray(text_input.value);
                 this.updatePointsEarned(await current_word.calculatePoints());
                 this.updatePointsEarnedTextBox(await current_word.calculatePoints());
+                this.updateProgressBar(JSON.parse(localStorage.getItem(this.gamenum))["points_earned"], JSON.parse(localStorage.getItem(this.gamenum))["total_points"]);
             } 
         //delete the word from the text input
         text_input.value = "";
@@ -207,6 +208,12 @@ class GameGUI {
         const textbox = document.getElementById("points_earned");
         const textbox_value = parseInt(textbox.value);
         textbox.value = textbox_value + parseInt(points_to_add);
+    }
+
+    updateProgressBar (points_earned, total_game_points) {
+        const p = new Points(points_earned, total_game_points);
+        const progress_bar = document.getElementById("level");
+        progress_bar.value = p.calculateLevel();
 
     }
 }
@@ -221,7 +228,7 @@ class Points {
 
 
     calculatePercent () {
-        const percent = this.pointsPlayed / this.totalGamePoints;
+        const percent = this.pointsEarned / this.totalGamePoints;
         return percent;
     }
 

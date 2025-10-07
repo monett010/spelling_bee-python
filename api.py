@@ -26,8 +26,8 @@ def get_answers(game):
     r = ReadGameFiles(game)
     return r.getAnswers()
 
-# Returns true if the game exists, false if not
-@app.route ("/<game>")
+# Returns 1 if the game exists on the filesystem, 0 if not
+@app.get ("/<game>")
 def is_game(game):
     r = ReadGameFiles(game)
     return r.isGame()

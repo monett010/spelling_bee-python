@@ -213,7 +213,9 @@ class GameGUI {
     updateProgressBar (points_earned, total_game_points) {
         const p = new Points(points_earned, total_game_points);
         const progress_bar = document.getElementById("level");
+        const progress_bar_label = document.getElementById("progress_bar_label");
         progress_bar.value = p.calculateLevel();
+        progress_bar_label.innerHTML = p.getLevelName(p.calculateLevel());
 
     }
 }
@@ -274,6 +276,41 @@ class Points {
             return 9;
         } else {
             return 0;
+        }
+    }
+
+    getLevelName (level) {
+        if (level === 0) {
+            return "Beginner";
+        }
+        if (level === 1) {
+            return "Good Start";
+        }
+        if (level === 2) {
+            return "Moving Up";
+        }
+        if (level === 3) {
+            return "Good";
+        }
+        if (level === 4) {
+            return "Solid";
+        }
+        if (level === 5) {
+            return "Nice";
+        }
+        if (level === 6) {
+            return "Great";
+        }
+        if (level === 7) {
+            return "Amazing";
+        }
+        if (level === 8) {
+            return "Genius";
+        }
+        if (level === 9) {
+            return "Queen Bee";
+        } else {
+            return "Oops!";
         }
     }
 

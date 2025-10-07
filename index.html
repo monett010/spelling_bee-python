@@ -21,9 +21,8 @@
         </div>
         <script src="main.js"></script>
         <script>
-            let words_played = [];
-            let points_total = 0;
-
+            const gs = new GameStorage(20230814);
+            gs.initializeStorage();
             
             const gameGUI = new GameGUI(20230814);
             gameGUI.writeLetterButtons();

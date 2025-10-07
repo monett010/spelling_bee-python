@@ -160,13 +160,17 @@ class GameGUI {
         const text_input = document.getElementById("current_word");
         const current_word = new Word(text_input.value, this.gamenum);
         const isAnswer = await current_word.isAnswer();
-        // if the word is the answer, add it to the words_played textarea
+
+        // if the word is the answer, add it to the words_played textarea, calculate and
+        // update the earned points total, and add the words to the words_played array
             if (isAnswer) {
                 this.addWordToTextarea(text_input.value);
+                this.addToWordsPlayedArray(text_input.value);
+                this.updatePointsEarned(await current_word.calculatePoints());
             } 
         //delete the word from the text input
         text_input.value = "";
-        }
+    }
 
     addEventListenerToEnterButton() {
         const enterButton = document.getElementById("enter");
@@ -188,18 +192,23 @@ class GameGUI {
         words_played.push(word);
         localStorage.setItem(this.gamenum, JSON.stringify(game_data));
     }
+
+
+    updatePointsEarned (points_to_add) {
+        const game_data = JSON.parse(localStorage.getItem(this.gamenum));
+        game_data["points_earned"] += points_to_add;
+        localStorage.setItem(this.gamenum, JSON.stringify(game_data));
+    }
 }
 
 
 class Points {
-    constructor (pointsPlayed, totalGamePoints) {
+    constructor (pointsEarned, totalGamePoints) {
         this.totalGamePoints = totalGamePoints;
-        this.pointsPlayed = pointsPlayed;
+        this.pointsEarned = pointsEarned;
+        // this.gs = new GameStorage();
     }
 
-    updatePointsEarned (points_played) {
-        
-    }
 
     calculatePercent () {
         const percent = this.pointsPlayed / this.totalGamePoints;

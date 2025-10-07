@@ -160,10 +160,12 @@ class GameGUI {
         const text_input = document.getElementById("current_word");
         const current_word = new Word(text_input.value, this.gamenum);
         const isAnswer = await current_word.isAnswer();
+        const words_played = JSON.parse(localStorage.getItem(this.gamenum))["words_played"];
+        const alreadyAdded = current_word.alreadyAdded(words_played);
 
-        // if the word is the answer, add it to the words_played textarea, calculate and
+        // if the word is the answer and hasn't already been played, add it to the words_played textarea, calculate and
         // update the earned points total, and add the words to the words_played array
-            if (isAnswer) {
+            if (isAnswer && !alreadyAdded) {
                 this.addWordToTextarea(text_input.value);
                 this.addToWordsPlayedArray(text_input.value);
                 this.updatePointsEarned(await current_word.calculatePoints());

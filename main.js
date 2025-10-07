@@ -167,6 +167,7 @@ class GameGUI {
                 this.addWordToTextarea(text_input.value);
                 this.addToWordsPlayedArray(text_input.value);
                 this.updatePointsEarned(await current_word.calculatePoints());
+                this.updatePointsEarnedTextBox(await current_word.calculatePoints());
             } 
         //delete the word from the text input
         text_input.value = "";
@@ -198,6 +199,13 @@ class GameGUI {
         const game_data = JSON.parse(localStorage.getItem(this.gamenum));
         game_data["points_earned"] += points_to_add;
         localStorage.setItem(this.gamenum, JSON.stringify(game_data));
+    }
+
+    updatePointsEarnedTextBox (points_to_add) {
+        const textbox = document.getElementById("points_earned");
+        const textbox_value = parseInt(textbox.value);
+        textbox.value = textbox_value + parseInt(points_to_add);
+
     }
 }
 

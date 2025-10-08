@@ -34,3 +34,19 @@ div#buttons {
     display: flex; align-items: center; justify-content: center;
     border: 1px dashed red;
 }
+
+/* This is the message that says "Sorry, there's no game here!" if 
+the game does not exist on the filesystem. */
+
+div#sorry {
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+    position: absolute;
+    z-index: 50;
+    display: none;
+}
+
+div#sorry > p {
+    text-align: center;
+}

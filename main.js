@@ -294,7 +294,9 @@ class LoadGame {
             }
             
         } else {
-            console.log ("Sorry, there's no game here!");
+            // shows a message that says "Sorry, there's no game here!"
+            const sorry_message = document.getElementById("sorry");
+            sorry_message.style.display = "block";
         }
     }
 

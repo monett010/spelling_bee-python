@@ -182,7 +182,7 @@ class GameGUI {
                 this.updatePointsEarned(await current_word.calculatePoints());
                 this.updatePointsEarnedTextBox(await current_word.calculatePoints());
                 this.updateProgressBar(JSON.parse(localStorage.getItem(this.gamenum))["points_earned"], JSON.parse(localStorage.getItem(this.gamenum))["total_points"]);
-                this.checkGenius(JSON.parse(localStorage.getItem(this.gamenum))["points_earned"], JSON.parse(localStorage.getItem(this.gamenum))["total_points"]);
+                this.checkIfGenius(JSON.parse(localStorage.getItem(this.gamenum))["points_earned"], JSON.parse(localStorage.getItem(this.gamenum))["total_points"]);
             } 
         //delete the word from the text input
         text_input.value = "";
@@ -230,7 +230,7 @@ class GameGUI {
         progress_bar_label.innerHTML = p.getLevelName(p.calculateLevel());
     }
 
-    checkGenius (points_earned, total_game_points) {
+    checkIfGenius (points_earned, total_game_points) {
         const p = new Points (points_earned, total_game_points);
         if (p.isGenius() === true) {
             this.showGenius();

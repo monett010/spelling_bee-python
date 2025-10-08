@@ -284,15 +284,17 @@ class LoadGame {
         const isGame = await g.isGame();
         const gs = new GameStorage(this.gamenum);
 
-        if (isGame === true) {
-            if (localStorage.getItem(this.gamenum) !== null) {
-                this.loadProgressBar();
-                this.loadTextarea();
-                this.loadPointsEarned();
-            } else {
-                await gs.initializeStorage();
-            }
-            
+        // if the game exists on the filesystem, and there is already an in progress game
+        // in localStorage, load the game from localStorage
+        if (isGame === true && localStorage.getItem(this.gamenum) !== null) {
+            this.loadProgressBar();
+            this.loadTextarea();
+            this.loadPointsEarned();
+        }
+        // if the game exists on the filesystem, and there is NOT an in progress game
+        // in localStorage, initialize a new localStorage object for the game 
+        else if (isGame === true && localStorage.getItem(this.gamenum) === null) {
+            await gs.initializeStorage();
         } else {
             // shows a message that says "Sorry, there's no game here!"
             const sorry_message = document.getElementById("sorry");

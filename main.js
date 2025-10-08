@@ -247,12 +247,12 @@ class LoadGame {
         this.gamenum = urlParams.get('game');
     }
 
-    // grabGameFromURL () {
-    //     const queryString = window.location.search;
-    //     const urlParams = new URLSearchParams(queryString);
-    //     const gamenum = urlParams.get('game');
-    //     return gamenum;
-    // }
+    grabGameFromURL () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const gamenum = urlParams.get('game');
+        return gamenum;
+    }
 
     loadProgressBar () {
         const gameGUI = new GameGUI(this.gamenum);
@@ -296,8 +296,18 @@ class LoadGame {
         } else {
             console.log ("Sorry, there's no game here!");
         }
-
     }
+
+    loadGUI () {
+        const gg = new GameGUI(this.gamenum);
+        gg.writeLetterButtons();
+        setTimeout(() => {gg.addEventListenersToLetterButtons()}, 1500);
+        setTimeout(() => {gg.addEventListenerToEnterButton()}, 1500);
+        setTimeout(() => {gg.addEventListenerToTextInput()}, 2000);
+        
+    }
+
+
 
 }
 

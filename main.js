@@ -173,6 +173,8 @@ class GameGUI {
         const isAnswer = await current_word.isAnswer();
         const words_played = JSON.parse(localStorage.getItem(this.gamenum))["words_played"];
         const alreadyAdded = current_word.alreadyAdded(words_played);
+        const points_earned = JSON.parse(localStorage.getItem(this.gamenum))["points_earned"];
+        const total_game_points = JSON.parse(localStorage.getItem(this.gamenum))["total_points"];
 
         // if the word is the answer and hasn't already been played, add it to the words_played textarea, calculate and
         // update the earned points total, and add the words to the words_played array
@@ -181,8 +183,8 @@ class GameGUI {
                 this.addToWordsPlayedArray(text_input.value);
                 this.updatePointsEarned(await current_word.calculatePoints());
                 this.updatePointsEarnedTextBox(await current_word.calculatePoints());
-                this.updateProgressBar(JSON.parse(localStorage.getItem(this.gamenum))["points_earned"], JSON.parse(localStorage.getItem(this.gamenum))["total_points"]);
-                this.checkIfGenius(JSON.parse(localStorage.getItem(this.gamenum))["points_earned"], JSON.parse(localStorage.getItem(this.gamenum))["total_points"]);
+                this.updateProgressBar(points_earned, total_game_points);
+                this.checkIfGenius(points_earned, total_game_points);
             } 
         //delete the word from the text input
         text_input.value = "";

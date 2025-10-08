@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <title>Spelling Bee</title>
+        <script src="main.js"></script>
+    </head>
+    <body>
+
+        <script>
+            async function fetchTest (endpoint) {
+                try {
+                    const response = await fetch(endpoint)
+                    if (!response.ok) {
+                        return "Can't connect to API.";
+                    }
+                }
+                catch (error) {
+                    return "Can't connect to API.";
+                }
+            }
+            console.log (fetchTest("127.0.0.1:5000/"));
+
+            async function checkConnection () {
+                if (await fetchTest ('http://127.0.0.1:5000/') === "Can't connect to API.") {
+                    return ("Can't connect to API.");
+                }
+            }
+
+            console.log (checkConnection());
+
+
+
+
+        </script>
+    </body>
+</html>

@@ -32,5 +32,11 @@ def is_game(game):
     r = ReadGameFiles(game)
     return r.isGame()
 
+@app.get ("/all")
+def get_all_games():
+    r = ReadGameFiles("all")
+    return r.getAllGames()
+
+
 if __name__ == "__main__":
     app.run(debug=True)

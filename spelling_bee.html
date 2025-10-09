@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <title>Spelling Bee</title>
+    </head>
+    <body>
+        <div id="sorry">
+            <p>Sorry, there's no game here!</p>
+        </div>
+        <div id="genius">
+            <div>
+            <p>Genius!</p>
+            </div>
+        </div>
+        <div id="top">
+            <label for="level" id="progress_bar_label">Level</label>
+            <progress id="level" value="0" max="10">Beginner</progress>
+            <input type="text" size="3" value="0" id="points_earned" aria-label="points_earned" autocomplete="off">
+            <input type="text" id="current_word" aria-label="current_word" autocomplete="off">
+            <textarea id="words_played" aria-label="words_played" autocomplete="off"></textarea>
+        </div>
+        <div id="letters"></div>
+        <div id="buttons">
+            <button type="button" id="delete" aria-label="Delete">Delete</button>
+            <button type="button" id="shuffle" aria-label="Shuffle">Shuffle</button>
+            <button type="button" id="enter" aria-label="Enter">Enter</button>
+        </div>
+        <script src="main.js"></script>
+        <script>
+            const lg = new LoadGame();
+            lg.loadGame();
+
+            // const gg = new GameGUI();
+            lg.loadGUI();
+            // const gs = new GameStorage(20230814);
+            // gs.initializeStorage();
+
+            // const gamenum = lg.grabGameFromURL();
+            // const gameGUI = new GameGUI(gamenum);
+            // gameGUI.writeLetterButtons();
+            // setTimeout(() => {gameGUI.addEventListenersToLetterButtons()}, 1500);
+            // setTimeout(() => {gameGUI.addEventListenerToEnterButton()}, 1500);
+            // setTimeout(() => {gameGUI.addEventListenerToTextInput()}, 2000);
+        </script>
+    </body>
+</html>

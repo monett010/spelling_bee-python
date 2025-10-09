@@ -29,3 +29,14 @@ class ReadGameFiles ():
             return "1"
         else:
             return "2"
+    
+    def getAllGames(self):
+        games = []
+        gamesdir = os.listdir('games')
+
+        for g in gamesdir:
+            if (os.path.isdir('games/' + g)):
+                games.append(g)
+        
+        games.sort()
+        return games

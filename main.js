@@ -49,6 +49,18 @@ class Game {
             return false;
         }
     }
+
+    async getGames() {
+        const games_list = document.getElementById("games_list")
+        const g = new Game("all")
+
+        const games = await g.fetchData (this.game_url + "all")
+
+        for (let x=0; x<games.length; x++) {
+            const game_link = `<a href='spelling_bee.html?game=${games[x]}'>${games[x]}</a>`
+            games_list.innerHTML += `<li>${game_link}</li>`
+        }
+    }
 }
 
 class Word {

@@ -179,7 +179,7 @@ class GameGUI {
     // EventListener and the text input EventListener
     checkWord = async ()=> {
         const text_input = document.getElementById("current_word");
-        const current_word = new Word(text_input.value, this.gamenum);
+        const current_word = new Word(text_input.value.trim(), this.gamenum);
         const isAnswer = await current_word.isAnswer();
         const words_played = JSON.parse(localStorage.getItem(this.gamenum))["words_played"];
         const alreadyAdded = current_word.alreadyAdded(words_played);

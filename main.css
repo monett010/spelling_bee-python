@@ -1,15 +1,15 @@
 div#letters {
-    height: 500px;
+    height: 150px;
     width: 70%;
     margin: auto;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 div#top {
     height: 300px;
     width: 70%;
     margin: auto;
-    border: 1px dashed blue;
+    /* border: 1px dashed blue; */
 }
 
 progress#level {
@@ -32,7 +32,7 @@ div#buttons {
     width: 70%;
     margin: auto;
     display: flex; align-items: center; justify-content: center;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 /* This is the message that says "Sorry, there's no game here!" if 

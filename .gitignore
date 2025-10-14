@@ -2,3 +2,4 @@ games/
 __pycache__/
 Base.js
 game_dir.json
+.env

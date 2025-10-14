@@ -1,23 +1,29 @@
 import os
 import json
 from dotenv import load_dotenv
+#from os import getenv
 
-class Games ():
-    def getGamesPath ():
-        with open('game_dir.json', 'r') as file:
-            json_ = json.load(file)
-            gamesdir_path = json_["games_dir"]
-        return gamesdir_path
+load_dotenv('.env')
 
-    def getPath ():
-        load_dotenv()
-        gamesdir_path = os.environ['games_dir']
-        return gamesdir_path
+#class Games ():
+    #def __init__(self):
+        #this.gamesdir_path = os.getenv('GAMES_DIRECTORY')
+    #def getGamesPath ():
+        #with open('game_dir.json', 'r') as file:
+            #json_ = json.load(file)
+            #gamesdir_path = json_["games_dir"]
+        #return gamesdir_path
 
-class ReadGameFiles (Games):
+    #def getPath (self):
+        #load_dotenv()
+        #gamesdir_path = os.environ.get("GAMES_DIRECTORY")
+        #return self.gamesdir_path
+
+class ReadGameFiles ():
     def __init__(self, game):
         #self.game_dir = f'/games/{game}/'
-        self.game_dir = f'/{Games.getPath()}/{game}/'
+        self.gamesdir_path = os.environ['GAMES_DIRECTORY']
+        self.game_dir = f'/{self.gamesdir_path}/{game}/'
         self.game = game
 
 
@@ -51,14 +57,20 @@ class ReadGameFiles (Games):
         games = []
 
         # gets the path of the games directory from the game_dir.json file
-        with open ('game_dir.json', 'r') as file:
-            json_ = json.load(file)
-            gamesdir_path = json_["games_dir"]
-            gamesdir = os.listdir(gamesdir_path)
+        #with open ('game_dir.json', 'r') as file:
+            #json_ = json.load(file)
+            #gamesdir_path = json_["games_dir"]
+            #gamesdir = os.listdir(gamesdir_path)
 
-            for g in gamesdir:
-                if (os.path.isdir(gamesdir_path + "/" + g)):
-                    games.append(g)
+            #for g in gamesdir:
+                #if (os.path.isdir(gamesdir_path + "/" + g)):
+                    #games.append(g)
+        #gamesdir_path = Games.getPath()
+        gamesdir = os.listdir(self.gamesdir_path)
+
+        for g in gamesdir:
+            if (os.path.isdir(self.gamesdir_path + "/" + g)):
+                games.append(g)
         
         games.sort()
         return games

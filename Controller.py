@@ -1,10 +1,20 @@
 import os
 import json
 
-class ReadGameFiles ():
+class Games ():
+    def getGamesPath ():
+        with open('game_dir.json', 'r') as file:
+            json_ = json.load(file)
+            gamesdir_path = json_["games_dir"]
+        return gamesdir_path
+
+class ReadGameFiles (Games):
     def __init__(self, game):
-        self.game_dir = f'games/{game}/'
+        #self.game_dir = f'/games/{game}/'
+        self.game_dir = f'/{Games.getGamesPath()}/{game}/'
         self.game = game
+
+
 
     def getPoints (self):
         with open (f'{self.game_dir}{self.game}_points.txt', 'r') as pointsfile:

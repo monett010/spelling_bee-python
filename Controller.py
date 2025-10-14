@@ -1,5 +1,6 @@
 import os
 import json
+from dotenv import load_dotenv
 
 class Games ():
     def getGamesPath ():
@@ -8,10 +9,15 @@ class Games ():
             gamesdir_path = json_["games_dir"]
         return gamesdir_path
 
+    def getPath ():
+        load_dotenv()
+        gamesdir_path = os.environ['games_dir']
+        return gamesdir_path
+
 class ReadGameFiles (Games):
     def __init__(self, game):
         #self.game_dir = f'/games/{game}/'
-        self.game_dir = f'/{Games.getGamesPath()}/{game}/'
+        self.game_dir = f'/{Games.getPath()}/{game}/'
         self.game = game
 
 

@@ -1,8 +1,13 @@
 class Game {
     constructor (game_num) {
+        const base = new Base();
         this.game_num = game_num;
-        this.game_url = "http://127.0.0.1:5000/";
+        // this.game_url = "http://127.0.0.1:5000/";
+        this.game_url = base.getBaseURL();
     }
+
+
+
     // generic function to fetch data from the API
     // if there is no response_type given, it defaults to return json
     // if response_type is 'text', then it returns text

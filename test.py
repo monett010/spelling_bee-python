@@ -1,5 +1,6 @@
 from Controller import ReadGameFiles
 import os
+import json
 
 r = ReadGameFiles(20230814)
 
@@ -8,7 +9,7 @@ r = ReadGameFiles(20230814)
 
 # print (r.isGame())
 
-print (r.getAllGames())
+# print (r.getAllGames())
 # print (os.listdir('games'))
 
 # games = []
@@ -18,3 +19,7 @@ print (r.getAllGames())
 #         games.append(g)
 # games.sort()
 # print (games)
+
+# print (r.getAllGames())
+
+print(r.getAllGames())

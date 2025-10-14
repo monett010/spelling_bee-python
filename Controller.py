@@ -1,4 +1,5 @@
 import os
+import json
 
 class ReadGameFiles ():
     def __init__(self, game):
@@ -32,11 +33,16 @@ class ReadGameFiles ():
     
     def getAllGames(self):
         games = []
-        gamesdir = os.listdir('games')
 
-        for g in gamesdir:
-            if (os.path.isdir('games/' + g)):
-                games.append(g)
+        # gets the path of the games directory from the game_dir.json file
+        with open ('game_dir.json', 'r') as file:
+            json_ = json.load(file)
+            gamesdir_path = json_["games_dir"]
+            gamesdir = os.listdir(gamesdir_path)
+
+            for g in gamesdir:
+                if (os.path.isdir(gamesdir_path + "/" + g)):
+                    games.append(g)
         
         games.sort()
         return games

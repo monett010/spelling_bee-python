@@ -23,7 +23,7 @@ class ReadGameFiles ():
     def __init__(self, game):
         #self.game_dir = f'/games/{game}/'
         self.gamesdir_path = os.environ['GAMES_DIRECTORY']
-        self.game_dir = f'/{self.gamesdir_path}/{game}/'
+        self.game_dir = f'{self.gamesdir_path}/{game}/'
         self.game = game
 
 

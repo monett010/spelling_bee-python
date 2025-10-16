@@ -152,6 +152,16 @@ class GameGUI {
         test_box.value = test_box.value + letter.toLowerCase();
     }
 
+    deleteLettersFromTextBox () {
+        const test_box = document.getElementById("current_word");
+        test_box.value = test_box.value.slice (0, -1);
+    }
+
+    addEventListenerToDeleteButton () {
+        const delete_btn = document.getElementById("delete");
+        delete_btn.addEventListener("click", ()=>{this.deleteLettersFromTextBox()});
+    }
+
     addEventListenersToLetterButtons () {
         const buttons = document.getElementsByClassName("letter");
             for (let b=0; b < buttons.length; b++) {
@@ -337,6 +347,7 @@ class LoadGame {
         setTimeout(() => {gg.addEventListenersToLetterButtons()}, 1500);
         setTimeout(() => {gg.addEventListenerToEnterButton()}, 1500);
         setTimeout(() => {gg.addEventListenerToTextInput()}, 2000);
+        setTimeout(() => {gg.addEventListenerToDeleteButton()}, 1500);
         
     }
 

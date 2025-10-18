@@ -3,7 +3,7 @@ import json
 from dotenv import load_dotenv
 #from os import getenv
 
-load_dotenv('.env')
+load_dotenv('/files/sb.env')
 
 #class Games ():
     #def __init__(self):

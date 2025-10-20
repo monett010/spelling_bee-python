@@ -71,6 +71,6 @@ class ReadGameFiles ():
         for g in gamesdir:
             if (os.path.isdir(self.gamesdir_path + "/" + g)):
                 games.append(g)
-                
+        games.remove(".git")
         games.sort()
         return games

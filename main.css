@@ -35,6 +35,12 @@ div#buttons {
     /* border: 1px dashed red; */
 }
 
+button.letter {
+    width: 75px;
+    height:75px;
+    margin: 10px;
+}
+
 /* This is the message that says "Sorry, there's no game here!" if 
 the game does not exist on the filesystem. */
 

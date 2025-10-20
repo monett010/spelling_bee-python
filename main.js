@@ -223,7 +223,13 @@ class GameGUI {
 
     addWordToTextarea (word) {
         const textarea = document.getElementById("words_played");
-        textarea.value += " " + word;
+
+        if ( textarea.value.length == 0) {
+            textarea.value += word;
+        } else {
+            textarea.value += " " + word;
+        }
+
     }
 
     addToWordsPlayedArray (word) {

@@ -315,6 +315,7 @@ class LoadGame {
         for (let w=0; w < words_played.length; w++) {
             textarea.value += " " + words_played[w];
         }
+        textarea.value = textarea.value.substring(1);
     }
 
     loadPointsEarned () {

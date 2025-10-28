@@ -2,14 +2,22 @@ div#letters {
     height: 150px;
     width: 70%;
     margin: auto;
-    /* border: 1px dashed red; */
+    border: 1px dashed red;
 }
 
-div#top {
+div#game {
+    border: 1px dashed green;
+    width: 100%;
+}
+
+div#left {
+    border: 1px dashed orange;
     height: 300px;
-    width: 70%;
-    margin: auto;
-    /* border: 1px dashed blue; */
+}
+
+div#right {
+    border: 1px dashed orange;
+    height: 300px;
 }
 
 progress#level {
@@ -32,7 +40,7 @@ div#buttons {
     width: 70%;
     margin: auto;
     display: flex; align-items: center; justify-content: center;
-    /* border: 1px dashed red; */
+    border: 1px dashed red;
 }
 
 button.letter {
@@ -78,4 +86,27 @@ div#genius > div > p {
     text-align: center;
     position: relative;
     top: 200px;
+}
+
+@media screen and (min-width: 1000px) {
+    div#game {
+        display: flex;
+        flex-direction: row-reverse;
+        height: 800px;
+    }
+
+    div#left {
+        height: 800px;
+        width: 50%;
+        /* margin: auto; */
+        border: 1px dashed orange;
+    }
+
+    div#right {
+        height: 800px;
+        width: 50%;
+        /* margin: auto; */
+        border: 1px dashed orange;
+    }
+
 }

@@ -137,14 +137,39 @@ class GameGUI {
         this.gamenum = gamenum;
     }
 
+    // async writeLetterButtons () {
+    //     const letters = await this.g.getLetters();
+    //     const button_div = document.getElementById("letters");
+
+    //     for (let l in letters){
+    //         const button = `<button type="button" id="${letters[l]}" class="letter" aria-label="${letters[l]}_button">${letters[l]}</button>` 
+    //         button_div.innerHTML += button;
+    //     }
+    // }
+
     async writeLetterButtons () {
         const letters = await this.g.getLetters();
-        const button_div = document.getElementById("letters");
+        const center_button_div = document.getElementById("letters_rowcenter");
+        const top_button_div = document.getElementById("letters_row1");
+        const bottom_button_div = document.getElementById("letters_row3");
+        const center_letter = letters[0];
+        
+        // write the center letter button
+        const center_button = `<button type="button" id="${center_letter}" class="letter" aria-label="${center_letter}_button">${center_letter}</button>` 
+        center_button_div.innerHTML += center_button;
 
-        for (let l in letters){
-            const button = `<button type="button" id="${letters[l]}" class="letter" aria-label="${letters[l]}_button">${letters[l]}</button>` 
-            button_div.innerHTML += button;
+        // write the top row of letter buttons
+        for (let x = 1; x <=3; x++) {
+            const top_button = `<button type="button" id="${letters[x]}" class="letter" aria-label="${letters[x]}_button">${letters[x]}</button>` 
+            top_button_div.innerHTML += top_button;
         }
+
+        // write the bottom row of letter buttons
+        for (let x = 4; x <=6; x++) {
+            const bottom_button = `<button type="button" id="${letters[x]}" class="letter" aria-label="${letters[x]}_button">${letters[x]}</button>` 
+            bottom_button_div.innerHTML += bottom_button;
+        }
+
     }
 
     addLettersToTextBox (letter) {

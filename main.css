@@ -103,6 +103,15 @@ button.letter {
     margin: 10px;
 }
 
+
+h1 > a {
+    text-decoration: none;
+}
+
+h1 > a:visited {
+    color: black;
+}
+
 /* This is the message that says "Sorry, there's no game here!" if 
 the game does not exist on the filesystem. */
 

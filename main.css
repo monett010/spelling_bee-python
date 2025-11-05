@@ -200,4 +200,8 @@ div#genius > div > p {
         width: 100%;
     }
 
+    div#current_word-div {
+        width: 100%;
+    }
+
 }

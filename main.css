@@ -155,18 +155,18 @@ div#genius > div > p {
     div#game {
         display: flex;
         flex-direction: row-reverse;
-        height: 800px;
+        height: 550px;
     }
 
     div#left {
-        height: 800px;
+        height: 500px;
         width: 50%;
         /* margin: auto; */
         border: 1px dashed orange;
     }
 
     div#right {
-        height: 800px;
+        height: 500px;
         width: 50%;
         /* margin: auto; */
         border: 1px dashed orange;

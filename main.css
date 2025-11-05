@@ -192,4 +192,12 @@ div#genius > div > p {
         width: 100%;
     }
 
+    div#letters {
+        width: 100%;
+    }
+
+    div#buttons {
+        width: 100%;
+    }
+
 }

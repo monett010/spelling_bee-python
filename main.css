@@ -187,13 +187,13 @@ div#genius > div > p {
     }
 
     div#progress_bar-div {
-        width: 100%;
+        width: 95%;
     }
 
     textarea#words_played {
         /* height: 100px; */
         height: 75px;
-        width: 100%;
+        width: 95%;
     }
 
     button.letter {

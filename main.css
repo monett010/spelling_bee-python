@@ -3,28 +3,28 @@ div#letters {
     height: 325px;
     width: 400px;
     margin: auto;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 div#letters_row1 {
     width: 100%;
     height: 95px;
     display: flex; justify-content: center;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 div#letters_rowcenter {
     width: 100%;
     height: 95px;
     display: flex; justify-content: center;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 div#letters_row3 {
     width: 100%;
     height: 95px;
     display: flex; justify-content: center;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 div#game {
@@ -38,12 +38,12 @@ div#heading {
 }
 
 div#left {
-    border: 1px dashed orange;
+    /* border: 1px dashed orange; */
     height: 300px;
 }
 
 div#right {
-    border: 1px dashed orange;
+    /* border: 1px dashed orange; */
     height: 300px;
 }
 
@@ -70,7 +70,7 @@ div#current_word-div {
     width: 400px;
     margin: auto;
     text-align: center;
-    border: 1px dashed blue;
+    /* border: 1px dashed blue; */
 }
 
 input[type="text"]#current_word {
@@ -90,7 +90,7 @@ div#buttons {
     width: 500px;
     margin: auto;
     display: flex; align-items: center; justify-content: center;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
 }
 
 div#buttons > button {

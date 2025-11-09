@@ -75,7 +75,8 @@ div#current_word-div {
 
 input[type="text"]#current_word {
 /* needs to be the same width as the letters div */
-    height: 50px;
+    /* height: 50px; */
+    height: 40px;
     width: 90%;
     font-size: 25px;
 }
@@ -176,11 +177,13 @@ div#genius > div > p {
 
 @media screen and (max-width: 1149px) {
     div#left {
-        height: 200px;
+        /* height: 200px; */
+        height: 170px;
     }
 
     div#right {
-        height: 500px;
+        /* height: 500px; */
+        height: 350px;
     }
 
     div#progress_bar-div {
@@ -188,16 +191,40 @@ div#genius > div > p {
     }
 
     textarea#words_played {
-        height: 100px;
+        /* height: 100px; */
+        height: 75px;
         width: 100%;
+    }
+
+    button.letter {
+        height: 50px;
+        width: 50px;
     }
 
     div#letters {
         width: 100%;
+        height: 250px;
+    }
+
+    div#letters_row1 {
+        height: 80px;
+    }
+
+    div#letters_rowcenter {
+        height: 80px;
+    }
+
+    div#letters_row3 {
+        height: 80px;
     }
 
     div#buttons {
         width: 100%;
+        height: 3em; 
+    }
+
+    div#buttons > button {
+        height: 2.5em;
     }
 
     div#current_word-div {

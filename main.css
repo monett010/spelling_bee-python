@@ -28,7 +28,7 @@ div#letters_row3 {
 }
 
 div#game {
-    border: 1px dashed green;
+    /* border: 1px dashed green; */
     width: 100%;
 }
 
@@ -51,7 +51,7 @@ div#progress_bar-div {
     height: 35px;
     width: 600px;
     display: flex;
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
 }
 
 progress#level {
@@ -163,14 +163,14 @@ div#genius > div > p {
         height: 500px;
         width: 50%;
         /* margin: auto; */
-        border: 1px dashed orange;
+        /* border: 1px dashed orange; */
     }
 
     div#right {
         height: 500px;
         width: 50%;
         /* margin: auto; */
-        border: 1px dashed orange;
+        /* border: 1px dashed orange; */
     }
 
 }

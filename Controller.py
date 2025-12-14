@@ -74,5 +74,5 @@ class ReadGameFiles ():
         #if the games directory has a .git directory, then remove the .git directory from the games dict
         if (os.path.isdir(self.gamesdir_path + "/.git")):
             games.remove(".git")
-        games.sort()
+        games.sort(reverse=True)
         return games

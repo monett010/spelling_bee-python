@@ -233,8 +233,8 @@ class GameGUI {
                 this.addToWordsPlayedArray(text_input.value);
                 this.updatePointsEarned(await current_word.calculatePoints());
                 this.updatePointsEarnedTextBox(await current_word.calculatePoints());
-                this.updateProgressBar(points_earned, total_game_points);
-                this.checkIfGenius(points_earned, total_game_points);
+                setTimeout(()=>{this.updateProgressBar(points_earned, total_game_points)}, 750);
+                setTimeout(()=>{this.checkIfGenius(points_earned, total_game_points)},1000);
             } 
         //delete the word from the text input
         text_input.value = "";

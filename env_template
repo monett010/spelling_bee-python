@@ -1,0 +1,2 @@
+# use this template to make your .env file, which is linked in Controller.py
+GAMES_DIRECTORY="[the path to the games folder]"

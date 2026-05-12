@@ -76,3 +76,15 @@ class ReadGameFiles ():
             games.remove(".git")
         games.sort(reverse=True)
         return games
+
+
+class SaveGame():
+    def __init__(self, game):
+        self.game = game
+        self.gamesdir_path = os.environ['GAMES_DIRECTORY']
+        # self.game_dir = f'{self.gamesdir_path}/{game}/'
+
+    def write_save(self, data:dict):
+        gamesave_path:str = f"{self.gamesdir_path}/saves/{self.game}_save.json"
+        with open (gamesave_path, "w") as file:
+            file.write(json.dumps(data))

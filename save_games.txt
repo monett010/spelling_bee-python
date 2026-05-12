@@ -1,0 +1,23 @@
+SPELLING BEE SAVE GAMES TO SERVER
+
+if the word gets added, write the localStorage to a json file
+--- GameGUI.checkWord()
+
+save_20260423.json
+
+when loading game, check to see if there's a save file before checking localStorage. if there is, load that to localStorage. then load game as usual.
+--- LoadGame.loadGame()
+
+
+JAVASCRIPT
+SaveGame.writeSave()
+x SaveGame.checkSaves()
+gameStorage.writeSave()
+
+PYTHON - api.py
+/save/[gamenum]
+
+PYTHON - Controller.py
+SaveGame()
+o write_save(data:dict)
+- open/create json file, write data

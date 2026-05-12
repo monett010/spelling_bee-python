@@ -10,14 +10,25 @@ when loading game, check to see if there's a save file before checking localStor
 
 
 JAVASCRIPT
+- add sendData() to new GameSave() class, rename it
+writeSave()
+- [GameGUI.checkWord()] if word gets added, call writeSave()
+- [LoadGame.loadGame()] when loading game, check to see if there's a save file before
+checking localStorage. if there is, load the save game to localStorage.
+else load game as usual
+
+SaveGame.isSave()
+- returns true or false if there's a save game
+- write new function in Controller.py and api endpoint to check if there's a save
+
 SaveGame.writeSave()
 x SaveGame.checkSaves()
 gameStorage.writeSave()
 
 PYTHON - api.py
-/save/[gamenum]
+X /save/[gamenum]
 
 PYTHON - Controller.py
-SaveGame()
-o write_save(data:dict)
-- open/create json file, write data
+X SaveGame()
+X write_save(data:dict)
+X open/create json file, write data

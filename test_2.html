@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <title>POST DATA TEST</title>
+    </head>
+    <body>
+        <script src="test_2.js"></script>
+
+            <script>
+                const data = {"points_earned":1,"words_played":["tide"],"total_points":"237"}
+                const url = "http://127.0.0.1:5000/save/2026515"
+                sendData(url, data)
+                console.log(data)
+            </script>
+    </body>
+</html>

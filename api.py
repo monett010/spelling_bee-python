@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from Controller import ReadGameFiles
-from Controller import WriteSaveGame
+from Controller import SaveGame
 
 app = Flask (__name__)
 cors = CORS(app)
@@ -38,6 +38,14 @@ def get_all_games():
     r = ReadGameFiles("all")
     return r.getAllGames()
 
+@app.post ("/save/<game>")
+def save_game(game):
+    s = SaveGame(game)
+    if (request.data):
+        data = request.get_json()
+        return s.write_save(data)
+    else:
+        return "No game data to save."
 
 if __name__ == "__main__":
     app.run(debug=True)

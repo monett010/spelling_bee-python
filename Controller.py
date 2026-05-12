@@ -84,7 +84,8 @@ class SaveGame():
         self.gamesdir_path = os.environ['GAMES_DIRECTORY']
         # self.game_dir = f'{self.gamesdir_path}/{game}/'
 
-    def write_save(self, data:dict):
+    def write_save(self, data):
         gamesave_path:str = f"{self.gamesdir_path}/saves/{self.game}_save.json"
         with open (gamesave_path, "w") as file:
-            file.write(json.dumps(data))
+            file.write(str(data))
+        return "Wrote save."

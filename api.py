@@ -38,6 +38,7 @@ def get_all_games():
     r = ReadGameFiles("all")
     return r.getAllGames()
 
+# Saves a game file
 @app.post ("/save/<game>")
 def save_game(game):
     s = SaveGame(game)
@@ -46,6 +47,18 @@ def save_game(game):
         return s.write_save(data)
     else:
         return "No game data to save."
+
+# Checks to see if there's a save file for the given game
+@app.get ("/save/check/<game>")
+def is_saved(game):
+    s = SaveGame(game)
+    return s.check_save()
+
+# Loads a gave save file
+@app.get ("/save/<game>")
+def load_save(game):
+    s = SaveGame(game)
+    return s.load_save()
 
 if __name__ == "__main__":
     app.run(debug=True)

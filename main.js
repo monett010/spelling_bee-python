@@ -362,6 +362,19 @@ class LoadGame {
         const isGame = await g.isGame();
         const gs = new GameStorage(this.gamenum);
 
+        const save = new GameSave(this.gamenum)
+        const hasSaveFile = await save.hasSaveFile()
+        const loadSaveFile = await save.loadSaveFile()
+
+        // checks if there's a save file on the server first. if so, clears localstorage
+        // and loads the save file into localStorage
+        if (hasSaveFile == true) {
+            if (localStorage.getItem(this.gamenum) !== null) {
+                localStorage.removeItem(this.gamenum)
+            }
+            localStorage.setItem(this.gamenum, JSON.stringify(loadSaveFile))
+        }
+
         // if the game exists on the filesystem, and there is already an in progress game
         // in localStorage, load the game from localStorage
         if (isGame === true && localStorage.getItem(this.gamenum) !== null) {
@@ -520,12 +533,13 @@ class GameStorage {
 class GameSave {
     constructor (gamenum) {
         this.gamenum = gamenum;
+        this.b = new Base();
+        this.base_url = this.b.getBaseURL();
+        this.g = new Game(this.gamenum)
     }
 
     async saveGame (data) {
-        const b = new Base();
-        const base_url = b.getBaseURL();
-        const endpoint_url = `${base_url}save/${this.gamenum}`
+        const endpoint_url = `${this.base_url}save/${this.gamenum}`
         const response = await fetch(endpoint_url, {
             method: "POST",
             body: JSON.stringify(data),
@@ -535,5 +549,22 @@ class GameSave {
         });
         const text = await response.text();
         return text;
+    }
+
+    async loadSaveFile () {
+        const endpoint_url = `${this.base_url}save/${this.gamenum}`;
+        const saved_game = await this.g.fetchData(endpoint_url);
+        return saved_game;
+    }
+
+    async hasSaveFile () {
+        const endpoint_url = `${this.base_url}save/check/${this.gamenum}`
+        const has_save = await this.g.fetchData(endpoint_url, "text");
+
+        if (has_save == "1"){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

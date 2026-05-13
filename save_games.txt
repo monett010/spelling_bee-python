@@ -12,10 +12,26 @@ when loading game, check to see if there's a save file before checking localStor
 JAVASCRIPT
 X add sendData() to new GameSave() class, rename it
 writeSave()
-- [GameGUI.checkWord()] if word gets added, call writeSave()
-- [LoadGame.loadGame()] when loading game, check to see if there's a save file before
+X [GameGUI.checkWord()] if word gets added, call writeSave()
+X [LoadGame.loadGame()] when loading game, check to see if there's a save file before
 checking localStorage. if there is, load the save game to localStorage.
 else load game as usual
+X use localStorage.clear() to clear before writing the save to localStorage
+
+s = new GameSave(this.gamenum);
+const hasSaveFile = await s.hasSave();
+
+GameSave.hasSave() {
+    fetchData()
+}
+
+[Controller.py]
+has_save():
+
+[api.py]
+X /save/check/<game>
+X returns boolean, true if save file exists, false if not
+
 - remove the saves folder from getAllGames
 
 SaveGame.isSave()

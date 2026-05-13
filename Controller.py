@@ -82,10 +82,30 @@ class SaveGame():
     def __init__(self, game):
         self.game = game
         self.gamesdir_path = os.environ['GAMES_DIRECTORY']
+        self.gamesave_dir = f"{self.gamesdir_path}/saves/"
         # self.game_dir = f'{self.gamesdir_path}/{game}/'
 
-    def write_save(self, data):
-        gamesave_path:str = f"{self.gamesdir_path}/saves/{self.game}_save.json"
+    def write_save(self, data) -> str:
+        # gamesave_path:str = f"{self.gamesdir_path}/saves/{self.game}_save.json"
+        gamesave_path:str = f"{self.gamesave_dir}{self.game}_save.json"
         with open (gamesave_path, "w") as file:
             json.dump(data, file)
         return "Wrote save."
+
+    # Checks if a save exists for the game. Returns 1 if true, 
+    # 0 if false
+    def check_save(self) -> str:
+        savesdir = os.listdir(self.gamesave_dir)
+        gamesave_filename = f"{self.game}_save.json"
+        if (gamesave_filename in savesdir):
+            return "1"
+        else:
+            return "0"
+    
+    # Loads a save game
+    def load_save(self) -> dict:
+        gamesave_path:str = f"{self.gamesave_dir}{self.game}_save.json"
+        with open (gamesave_path, "r") as file:
+            game_data = json.load(file)
+        return game_data
+

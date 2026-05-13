@@ -364,7 +364,6 @@ class LoadGame {
 
         const save = new GameSave(this.gamenum)
         const hasSaveFile = await save.hasSaveFile()
-        const loadSaveFile = await save.loadSaveFile()
 
         // checks if there's a save file on the server first. if so, clears localstorage
         // and loads the save file into localStorage
@@ -372,6 +371,7 @@ class LoadGame {
             if (localStorage.getItem(this.gamenum) !== null) {
                 localStorage.removeItem(this.gamenum)
             }
+            const loadSaveFile = await save.loadSaveFile()
             localStorage.setItem(this.gamenum, JSON.stringify(loadSaveFile))
         }
 

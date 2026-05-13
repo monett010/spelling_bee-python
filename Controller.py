@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 from dotenv import load_dotenv
 #from os import getenv
 
@@ -83,13 +84,15 @@ class ReadGameFiles ():
 class SaveGame():
     def __init__(self, game):
         self.game = game
-        self.gamesdir_path = os.environ['GAMES_DIRECTORY']
-        self.gamesave_dir = f"{self.gamesdir_path}/saves/"
+        # self.gamesdir_path = os.environ['GAMES_DIRECTORY']
+        self.gamesave_dir = os.environ['SAVES_DIRECTORY']
         # self.game_dir = f'{self.gamesdir_path}/{game}/'
 
     def write_save(self, data) -> str:
         # gamesave_path:str = f"{self.gamesdir_path}/saves/{self.game}_save.json"
-        gamesave_path:str = f"{self.gamesave_dir}{self.game}_save.json"
+        # this_dir = os.getcwd()
+        gamesave_path:str = f"{self.gamesave_dir}/{self.game}_save.json"
+        # gamesave_filename:str = f"{self.game}_save.json"
         with open (gamesave_path, "w") as file:
             json.dump(data, file)
         return "Wrote save."
@@ -105,8 +108,8 @@ class SaveGame():
             return "0"
     
     # Loads a save game
-    def load_save(self) -> dict:
-        gamesave_path:str = f"{self.gamesave_dir}{self.game}_save.json"
+    def load_save(self):
+        gamesave_path:str = f"{self.gamesave_dir}/{self.game}_save.json"
         with open (gamesave_path, "r") as file:
             game_data = json.load(file)
         return game_data

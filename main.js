@@ -510,3 +510,24 @@ class GameStorage {
     }
 
 }
+
+class GameSave {
+    constructor (gamenum) {
+        this.gamenum = gamenum;
+    }
+
+    async saveGame (data) {
+        const b = new Base();
+        const base_url = b.getBaseURL();
+        const endpoint_url = `${base_url}save/${this.gamenum}`
+        const response = await fetch(endpoint_url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        const text = await response.text();
+        return text;
+    }
+}

@@ -10,7 +10,7 @@ when loading game, check to see if there's a save file before checking localStor
 
 
 JAVASCRIPT
-- add sendData() to new GameSave() class, rename it
+X add sendData() to new GameSave() class, rename it
 writeSave()
 - [GameGUI.checkWord()] if word gets added, call writeSave()
 - [LoadGame.loadGame()] when loading game, check to see if there's a save file before

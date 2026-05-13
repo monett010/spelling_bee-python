@@ -16,6 +16,7 @@ writeSave()
 - [LoadGame.loadGame()] when loading game, check to see if there's a save file before
 checking localStorage. if there is, load the save game to localStorage.
 else load game as usual
+- remove the saves folder from getAllGames
 
 SaveGame.isSave()
 - returns true or false if there's a save game

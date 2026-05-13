@@ -227,6 +227,8 @@ class GameGUI {
         const points_earned = JSON.parse(localStorage.getItem(this.gamenum))["points_earned"];
         const total_game_points = JSON.parse(localStorage.getItem(this.gamenum))["total_points"];
 
+        const g = new GameSave(this.gamenum)
+
         // if the word is the answer and hasn't already been played, add it to the words_played textarea, calculate and
         // update the earned points total, and add the words to the words_played array
             if (isAnswer && !alreadyAdded) {
@@ -236,6 +238,10 @@ class GameGUI {
                 this.updatePointsEarnedTextBox(await current_word.calculatePoints());
                 setTimeout(()=>{this.updateProgressBar(points_earned, total_game_points)}, 750);
                 setTimeout(()=>{this.checkIfGenius(points_earned, total_game_points)}, 2000);
+            
+                // update the save file
+                const save_data = JSON.parse(localStorage.getItem(this.gamenum))
+                await g.saveGame(save_data)
             } 
         //delete the word from the text input
         text_input.value = "";
